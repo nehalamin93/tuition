@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+{% load staticfiles %} 
+<html lang="en">
+
+    <head>
+        <title>Teachers Listings</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    </head>
+    <style type="text/css">
+        .jumbotron {
+              background-image: url("{% static "images/map6c.jpg" %}");
+              color: #fff;
+              padding: 100px 25px;
+              font-family: Montserrat, sans-serif;
+          }
+    </style>
+
+    
+
+    <body>
+
+        
+
+        <div class="jumbotron text-center">
+            <h1>Teachers Near You</h1> 
+        </div>
+
+        <div class="container">
+        {% if persons %}
+            <ul class="list-unstyled">
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td>
+                                <strong>Teacher's Name</strong>
+                                </td>
+                                <td>
+                                <strong>Address</strong>
+                                </td>
+                                <td>
+                                <strong>Email Id</strong>
+                                </td>
+                            </tr>
+                        </thead>
+                    {% for person in persons %}                            
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#"><strong> {{ person.name }}</strong></a>
+                                </td> 
+                                <td>
+                                    <strong>{{ person.temp_address }}</strong>
+                                </td>
+                                <td>
+                                    {{ person.experience }}
+                                </td>
+                            </tr> 
+                                                                
+                    {% endfor %}
+                    </table>   
+            </ul>
+        {% else %}
+            <strong>There are no Teachers present.</strong>
+        {% endif %}
+
+        </div>
+        
+    </body>
+
+</html>
+
+
